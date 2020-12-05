@@ -1,0 +1,26 @@
+http://www.github.com/robertoavilla/educacionit_mongoavanzado
+
+YAML
+	Yet Another Markup Language
+
+
+show dbs //lsitar bases de datos
+use <dbname> //cambio a la base de datos que indico
+db.coleccion.insert({}) //inserta un documento en "coleccion"
+show collections //lista todas las colecciones de la base de datos actual
+db.coleccion.find() //busco los documentos de la coleccion
+
+
+
+db.createCollection("nombreColeccion",{CONFIG})
+
+CONFIG
+	-> Capped Collection ( Coleccion con limites )
+		size: tamaño de la coleccion en bytes
+			minimo de 4096 bytes
+			incrementando de a 256 bytes
+		max: cantidad de documentos
+		FIFO: First Input First Output
+	y/o
+	-> Colecciones con validaciones
+	
