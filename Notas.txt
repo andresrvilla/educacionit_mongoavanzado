@@ -24,3 +24,7 @@ CONFIG
 	y/o
 	-> Colecciones con validaciones
 	
+
+
+
+	db.compras.insert([{cantidad:2,valor:100},{cantidad:27,valor:7},{cantidad:5,valor:137}]
