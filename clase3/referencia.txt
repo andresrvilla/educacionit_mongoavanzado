@@ -1,0 +1,48 @@
+Creacion de indice
+db.cursos.createIndex({ "title": 1 }); 
+
+El 1 es ascendente, -1 descendente
+
+Creacion de indice con nombre
+db.cursos.createIndex({ "title": 1 }, {"name": "prueba"});
+
+Listar todos los indices
+db.cursos.getIndexes()
+
+Borrar todos los indices salvo el _id
+db.cursos.dropIndexes();
+
+Borrar un indice en particular
+db.cursos.dropIndex("Nombre Indice");
+
+Analizar como se ejecutará la consulta (Pero no la ejecuta)
+db.cursos.find({ nombre: "Algun Nombre"}).explain()
+
+Analizar como se ejecutará la consulta (Ejecutandola y trayendo metricas de la ejecución)
+db.cursos.find({ nombre: "Algun Nombre"}).explain("executionStats")
+
+Tipos de busqueda:
+
+COLLSCAN Busca documento por documento
+IXSCAN Busca por indice
+FETCH Recupera documento/s
+
+Creación de indice único (No se repiten los datos)
+db.cursos.createIndex({ "title": 1 }, {"name": "prueba", unique: true});
+
+Observación: Se necesita que los datos sean unicos antes de crear el indice
+
+Creación de indice ttl (Indice que borra los documentos luego de que pase X tiempo de una fecha)
+
+db.ttl.createIndex( { "fecha": 1 }, { expireAfterSeconds: 60 } )
+(Expira cuando pasan 60 segundos de la propiedad "fecha")
+
+Fechas en Mongo
+https://docs.mongodb.com/manual/reference/method/Date/
+
+Indices geoespaciales
+Si la coleccion es asi:
+{ "_id" : ObjectId("5fe72cfbe678052ce89bcef3"), "location" : { "type" : "Point", "coordinates" : [ -73.856077, 40.848447 ] } }
+
+Se crea un indice del objeto geojson
+db.location.createIndex({location:"2dsphere"})
